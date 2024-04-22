@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Defines the State class."""
+
 import models
 from os import getenv
 from models.base_model import Base
@@ -20,6 +21,7 @@ class State(BaseModel, Base):
         name (sqlalchemy String): The name of the State.
         cities (sqlalchemy relationship): The State-City relationship.
     """
+   
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
     cities = relationship("City",  backref="state", cascade="delete")
@@ -28,6 +30,7 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Get a list of all related City objects."""
+            
             city_list = []
             for city in list(models.storage.all(City).values()):
                 if city.state_id == self.id:

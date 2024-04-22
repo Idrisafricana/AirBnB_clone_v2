@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Defines the Review class."""
+
 from models.base_model import Base
 from models.base_model import BaseModel
 from sqlalchemy import Column
@@ -19,6 +20,7 @@ class Review(BaseModel, Base):
         place_id (sqlalchemy String): The review's place id.
         user_id (sqlalchemy String): The review's user id.
     """
+    
     __tablename__ = "reviews"
     text = Column(String(1024), nullable=False)
     place_id = Column(String(60), ForeignKey("places.id"), nullable=False)

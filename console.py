@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Defines the HBNB console."""
+
 import cmd
 from shlex import split
 from models import storage
@@ -29,14 +30,17 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """Ignore empty spaces."""
+
         pass
 
     def do_quit(self, line):
         """Quit command to exit the program."""
+
         return True
 
     def do_EOF(self, line):
         """EOF signal to exit the program."""
+
         print("")
         return True
 
@@ -44,6 +48,7 @@ class HBNBCommand(cmd.Cmd):
         """Usage: create <class> <key 1>=<value 2> <key 2>=<value 2> ...
         Create a new class instance with given keys/values and print its id.
         """
+
         try:
             if not line:
                 raise SyntaxError()
@@ -82,6 +87,7 @@ class HBNBCommand(cmd.Cmd):
             IndexError: when there is no id given
             KeyError: when there is no valid id given
         """
+
         try:
             if not line:
                 raise SyntaxError()
@@ -113,6 +119,7 @@ class HBNBCommand(cmd.Cmd):
             IndexError: when there is no id given
             KeyError: when there is no valid id given
         """
+
         try:
             if not line:
                 raise SyntaxError()
@@ -141,6 +148,7 @@ class HBNBCommand(cmd.Cmd):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
+
         if not line:
             o = storage.all()
             print([o[k].__str__() for k in o])
@@ -166,6 +174,7 @@ class HBNBCommand(cmd.Cmd):
             AttributeError: when there is no attribute given
             ValueError: when there is no value given
         """
+
         try:
             if not line:
                 raise SyntaxError()
@@ -204,6 +213,7 @@ class HBNBCommand(cmd.Cmd):
     def count(self, line):
         """count the number of instances of a class
         """
+
         counter = 0
         try:
             my_list = split(line, " ")
@@ -225,6 +235,7 @@ class HBNBCommand(cmd.Cmd):
         Return:
             returns string of argumetns
         """
+
         new_list = []
         new_list.append(args[0])
         try:
@@ -245,6 +256,7 @@ class HBNBCommand(cmd.Cmd):
         """retrieve all instances of a class and
         retrieve the number of instances
         """
+
         my_list = line.split('.')
         if len(my_list) >= 2:
             if my_list[1] == "all()":
